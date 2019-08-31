@@ -1,0 +1,80 @@
+<title>node Game</title>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/dashboard">NodeGame</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav nav-pills mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link active" href="/AddGame">Add Game</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/showAllGame">Game List</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/updateAndDelete" class="nav-link">Edit Game</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/users/logout" class="nav-link">Logout</a>
+                </li>
+            </ul>
+    
+        </div>
+    </nav>
+<h1 class="mt-4">AddGame</h1>
+<a href="/users/logout" class="btn btn-secondary">Logout</a>
+
+<div class="row">
+    <div class="col-sm"></div>
+</div>
+
+
+<div class="contianer">
+    <div class="row mt-10">
+        <div class="col-xl" style="width: 100% ">
+            <div class="card card-body">
+                <% include ./partials/messages %>
+                <form id="form" action="/addGame" method="POST">
+                    <fieldset background-color="black">
+                        <legend>Add Game</legend>
+                        <div class="form-group">
+                            <label for="title">Title:</label>
+                            <input type="title" class="form-control" id="title" name="title" placeholder="Enter Game Title">
+                        </div>
+                        <div class="form-group">
+                            <label for="discription">Discription:</label>
+                            <input type="discription" class="form-control" id="discription" name="discription" placeholder="Enter Discription">
+                        </div>
+                        <button type="submit" class="btn btn-dark">Create</button>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <ul class="list-group" id="display">
+
+            </ul>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <div class="alert" role="alert" id="message">
+
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>

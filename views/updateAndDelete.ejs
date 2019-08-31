@@ -1,0 +1,81 @@
+<title>Node Game</title>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/dashboard">NodeGame</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+        aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav nav-pills mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/addGame">Add Game</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/showAllGame">Game List</a>
+            </li>
+            <li class="nav-item active">
+                <a href="/updateAndDelete" class="nav-link active">Edit Game</a>
+            </li>
+            <li class="nav-item">
+                <a href="/users/logout" class="nav-link">Logout</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<h1 class="mt-4">Edit Game List</h1>
+<% include ./partials/messages %>
+
+<table class="table table-hover table-secondary">
+
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Discription</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% practices.forEach(function (practice) { %>
+
+
+
+        <tr class="tr-secondary">
+            <td><%= practice._id %></td>
+
+            <form action="/updateGame" method="post">
+                <td>
+                    <%= practice.title %></br>
+                    <input type="hidden" id="title" name="title" value=<%= practice.title %>>
+                    <input type="text" class="form-control" id="editTitle" name="editTitle" placeholder="Enter Game Title">
+                </td>
+                <td>
+                    <%= practice.discription %>
+                    <input type="hidden" id="discription" name="discription" value=<%= practice.discription %>>
+                    <input type="text" class="form-control" id="editDiscription" name="editDiscription"
+                        placeholder="Enter Discription">
+                </td>
+                <td>
+                    <input type="hidden" id="id" name="id" value=<%= practice._id %>>
+                    <input type="submit" value="Edit" class="btn btn-secondary btn-block" />
+            </form>
+            </td>
+            <td>
+                <form action="/deleteGame" method="post">
+                    <input type="hidden" id="title" name="title" value=<%= practice.title %>>
+                    <button type="submit" class="btn btn-dark btn-block">DELETE</button>
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+    </tbody>
+</table>
